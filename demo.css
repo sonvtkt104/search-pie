@@ -1,0 +1,71 @@
+:root {
+    /* Primary */
+    --color-primary-black: #313131;
+    --color-primary-gray: #7A7A7A;
+    --color-primary-orange: #FF7222;
+    --color-primary-green: #29845A;
+    --color-primary-red: #E03400;
+    --color-primary-yellow: #FBA900;
+    --color-primary-blue: #0071E9;
+    --color-white: #FFFFFF;
+
+    --color-secondary-black: #626262;
+
+    --color-background-orange: #F8F2EF; 
+    --color-background-black: #0F0400;
+
+    --color-border-input: #8A8A8A;
+}
+
+.pd-layout {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.demo-flex {
+    display: flex;
+}
+.demo-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.demo-flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+.demo-flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.demo-button-primary {
+    background: var(--color-primary-green);
+    color: var(--color-white);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 52px;
+}
+.demo-button-default {
+    background: var(--color-white);
+    color: var(--color-primary-black);
+    border: 1px solid var(--color-border-input);
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-sizing: border-box ;
+    height: 52px; 
+}
+.demo-input {
+    padding: 6px 12px;
+    border: 1px solid var(--color-border-input);
+    border-radius: 8px;
+    outline: none;
+    height: 52px;
+}
+
+
+.demo__container {
+    font-size: 20px;
+} 
