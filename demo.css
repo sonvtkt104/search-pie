@@ -13,11 +13,23 @@
 
     --color-background-orange: #F8F2EF; 
     --color-background-black: #0F0400;
+    --color-background-blue: #E0F0FF;
 
     --color-border-input: #8A8A8A;
 }
 
-.pd-layout {
+body {
+    margin: 0;
+    font-family: "Inter", serif !important;
+    font-style: normal;
+    font-size: 20px;
+}
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    font-family: "Inter", serif !important;
+}
+
+.demo-pd-layout {
     padding-left: 10%;
     padding-right: 10%;
 }
@@ -37,6 +49,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .demo-button-primary {
     background: var(--color-primary-green);
@@ -46,6 +59,8 @@
     border-radius: 8px;
     cursor: pointer;
     height: 52px;
+    font-family: "Inter", serif !important;
+    font-size: 20px;
 }
 .demo-button-default {
     background: var(--color-white);
@@ -56,6 +71,8 @@
     cursor: pointer;
     box-sizing: border-box ;
     height: 52px; 
+    font-family: "Inter", serif !important;
+    font-size: 20px;
 }
 .demo-input {
     padding: 6px 12px;
@@ -63,9 +80,33 @@
     border-radius: 8px;
     outline: none;
     height: 52px;
+    font-family: "Inter", serif !important;
+    box-sizing: border-box;
+    font-size: 16px;
 }
-
+.demo-h1 {
+    font-size: 48px;
+    font-weight: 600;
+}
+.demo-h2 {
+    font-size: 36px;
+    font-weight: 600;
+}
+.demo-h3 {
+    font-size: 28px;
+    font-weight: 600;
+}
 
 .demo__container {
     font-size: 20px;
+    color: var(--color-primary-black);
 } 
+.demo__header {
+    background: var(--color-background-black);
+    padding: 0 5%;
+}
+.demo__main {
+    padding-top: 90px;
+    padding-bottom: 30px;
+    background: var(--color-background-orange);
+}
