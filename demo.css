@@ -55,7 +55,8 @@ h1, h2, h3, h4, h5, h6, p {
     background: var(--color-primary-green);
     color: var(--color-white);
     border: none;
-    padding: 12px 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 8px;
     cursor: pointer;
     height: 52px;
@@ -66,7 +67,8 @@ h1, h2, h3, h4, h5, h6, p {
     background: var(--color-white);
     color: var(--color-primary-black);
     border: 1px solid var(--color-border-input);
-    padding: 12px 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 8px;
     cursor: pointer;
     box-sizing: border-box ;
@@ -76,7 +78,8 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .demo-input,
 .demo-select {
-    padding: 6px 12px;
+    padding-left: 12px;
+    padding-right: 12px;
     border: 1px solid var(--color-border-input);
     border-radius: 8px;
     outline: none;
@@ -84,12 +87,6 @@ h1, h2, h3, h4, h5, h6, p {
     font-family: "Inter", serif !important;
     box-sizing: border-box;
     font-size: 16px;
-}
-.demo-plus {
-    height: 40px;
-    width: 40px;
-    border-radius: 4px;
-    border: 1px dotted #8A8A8A;
 }
 .demo-h1 {
     font-size: 48px;
@@ -103,7 +100,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .demo-h3 {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 500;
 }
 .demo-h4 {
     font-size: 18px;
@@ -121,16 +118,30 @@ h1, h2, h3, h4, h5, h6, p {
 .demo__header {
     background: var(--color-background-black);
     padding: 0 3%;
+    height: 98px;
 }
 .demo__main {
     padding-top: 90px;
-    padding-bottom: 30px;
+    padding-bottom: 40px;
     background: var(--color-background-orange);
+}
+.demo__info__app {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
 }
 .demo__ebook {
     background: var(--color-background-orange);
     padding-top: 95px;
     padding-bottom: 95px;
+}
+.demo-ebook-banner {
+    flex-basis: 28%;
+}
+.demo-ebook-form {
+    flex-basis: 72%;
+    padding-left: 64px;
+    align-items: start;
 }
 .demo__why__choose__us {
     padding-top: 70px;
@@ -140,11 +151,21 @@ h1, h2, h3, h4, h5, h6, p {
     border-radius: 16px;
     padding: 20px;
     background: var(--color-background-orange);
+    flex-basis: 25%;
+    margin: 0 5px;
+}
+.demo-why-choose-us-item > img {
+    width: 100%;
+    margin-bottom: 12px;
 }
 .demo__seo__master {
     background: var(--color-background-orange);
     padding-top: 44px;
     padding-bottom: 50px;
+}
+.demo__partner {
+    height: 88px;
+    align-items: center;
 }
 .demo__review__users {
     padding-top: 40px;
@@ -156,6 +177,8 @@ h1, h2, h3, h4, h5, h6, p {
     padding: 20px;
     border-radius: 16px;
     border: 1px solid #E7E7E7;
+    flex-basis: 31%;
+    box-sizing: border-box;
 }
 .demo-review-user-pagination-item {
     margin: 0 8px;
@@ -164,6 +187,7 @@ h1, h2, h3, h4, h5, h6, p {
     border-radius: 50%;
     background: #D6D6D6;
     box-sizing: border-box;
+    cursor: pointer;
 }
 .demo-review-user-pagination-item.active{
     background: var(--color-white);
@@ -171,6 +195,15 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .demo__footer {
     background: var(--color-background-black);
-    padding: 40px 3%;
+    padding: 40px 0;
     color: var(--color-white);
+}
+.demo-background-decor {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: -1;
+}
+.demo-footer-info {
+    padding:  0 3%;
 }
