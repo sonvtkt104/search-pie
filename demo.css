@@ -125,6 +125,10 @@ h1, h2, h3, h4, h5, h6, p {
     padding-bottom: 40px;
     background: var(--color-background-orange);
 }
+.demo-check-one-page {
+    font-size: 14px;
+}
+
 .demo__info__app {
     padding-top: 20px;
     padding-bottom: 20px;
