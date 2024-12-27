@@ -30,8 +30,8 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .demo-pd-layout {
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 8%;
+    padding-right: 8%;
 }
 .demo-flex {
     display: flex;
@@ -74,7 +74,8 @@ h1, h2, h3, h4, h5, h6, p {
     font-family: "Inter", serif !important;
     font-size: 20px;
 }
-.demo-input {
+.demo-input,
+.demo-select {
     padding: 6px 12px;
     border: 1px solid var(--color-border-input);
     border-radius: 8px;
@@ -84,17 +85,33 @@ h1, h2, h3, h4, h5, h6, p {
     box-sizing: border-box;
     font-size: 16px;
 }
+.demo-plus {
+    height: 40px;
+    width: 40px;
+    border-radius: 4px;
+    border: 1px dotted #8A8A8A;
+}
 .demo-h1 {
     font-size: 48px;
     font-weight: 600;
+    line-height: 64px;
 }
 .demo-h2 {
     font-size: 36px;
     font-weight: 600;
+    line-height: 48px;
 }
 .demo-h3 {
     font-size: 28px;
     font-weight: 600;
+}
+.demo-h4 {
+    font-size: 18px;
+    line-height: 28px;
+}
+.demo-h5 {
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .demo__container {
@@ -103,10 +120,57 @@ h1, h2, h3, h4, h5, h6, p {
 } 
 .demo__header {
     background: var(--color-background-black);
-    padding: 0 5%;
+    padding: 0 3%;
 }
 .demo__main {
     padding-top: 90px;
     padding-bottom: 30px;
     background: var(--color-background-orange);
+}
+.demo__ebook {
+    background: var(--color-background-orange);
+    padding-top: 95px;
+    padding-bottom: 95px;
+}
+.demo__why__choose__us {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.demo-why-choose-us-item {
+    border-radius: 16px;
+    padding: 20px;
+    background: var(--color-background-orange);
+}
+.demo__seo__master {
+    background: var(--color-background-orange);
+    padding-top: 44px;
+    padding-bottom: 50px;
+}
+.demo__review__users {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: var(--color-background-orange);
+}
+.demo-review-user-item {
+    background: var(--color-white);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #E7E7E7;
+}
+.demo-review-user-pagination-item {
+    margin: 0 8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #D6D6D6;
+    box-sizing: border-box;
+}
+.demo-review-user-pagination-item.active{
+    background: var(--color-white);
+    border: 1px solid #D6D6D6;
+}
+.demo__footer {
+    background: var(--color-background-black);
+    padding: 40px 3%;
+    color: var(--color-white);
 }
