@@ -29,6 +29,14 @@ h1, h2, h3, h4, h5, h6, p {
     font-family: "Inter", serif !important;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .demo-pd-layout {
     padding-left: 8%;
     padding-right: 8%;
@@ -109,6 +117,43 @@ h1, h2, h3, h4, h5, h6, p {
 .demo-h5 {
     font-size: 16px;
     line-height: 24px;
+}
+.demo-progress-container {
+    height: 72px;
+    overflow: hidden;
+}
+.demo-progress {
+    position: relative;
+    width: 102px;
+    height: 102px;
+    border-radius: 50%;
+    color: #fff;
+    background: #F0F0F0 linear-gradient(to right, transparent 50%, var(--clr) 0);
+    transform: rotate(-120deg);
+}
+
+.demo-progress::before {
+    content: '';
+    display: block;
+    height: 100%;
+    margin-left: 50%;
+    transform-origin: left;
+    border-radius: 0 100% 100% 0 / 50%;
+}
+.demo-progress::after {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    background: white;
+}
+.demo-progress::before {
+    background: var(--clr);
+    transform: rotate(calc(((var(--i) - 50) * 0.01turn)));
+}
+.demo-progress.less::before {
+    background:#F0F0F0;
+    transform: rotate(calc(((var(--i) - 0) * 0.01turn)));
 }
 
 .demo__container {
@@ -210,4 +255,49 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .demo-footer-info {
     padding:  0 3%;
+}
+.demo-check-one-page {
+    font-size:14px;
+    border-radius: 16px;
+    background: var(--color-white);
+    padding: 20px;
+}
+.demo-check-speed {
+    flex-basis: 25%;
+    border: 1px solid #E4E4E4;
+    background: #FAFAFA;
+    border-radius: 8px;
+    padding: 20px 16px;
+    height: fit-content;
+}
+.demo-check-seo {
+    flex-basis: 75%;
+    border: 1px solid #E4E4E4;
+    background: #FAFAFA;
+    border-radius: 8px;
+    padding: 20px 16px;
+}
+.demo-check-speed-mobile {
+    margin-right: 12px;
+}
+.demo-check-speed-item {
+    border: 1px solid #DFDFDF;
+    border-radius: 8px;
+    background: var(--color-white);
+    padding: 16px;
+    text-align: center;
+}
+.demo-check-seo-item {
+    margin-top: 20px;
+    border: 1px solid #DFDFDFDF;
+    background: var(--color-white);
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+.demo-check-seo-item-des {
+    border-top: 1px solid #E7E7E7;
+    padding-top: 12px;
+    margin-top: 12px;
+    color: var(--color-secondary-black);
+
 }
