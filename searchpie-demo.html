@@ -83,32 +83,32 @@
             </div>
 
             <!-- Check One page -->
-            <div class="demo-check-one-page demo-flex" style="gap: 16px; margin-top: 20px;">
+            <div class="demo-check-one-page demo-flex" style="gap: 16px; margin-top: 20px;display: none;">
                 <div class="demo-check-speed">
                     <h2 class="demo-h5" style="font-weight: 600;">  
                         Average speed score
                     </h2>
                     <p style="margin: 4px 0 20px; color: var( --color-secondary-black)">
-                        Average weighted speed score of the listed pages by <a href="#" target="_blank" style="color: var(--color-primary-blue);">Google PSI</a>
+                        Average weighted speed score of the listed pages by <a href="https://pagespeed.web.dev/" target="_blank" style="color: var(--color-primary-blue);">Google PSI</a>
                     </p>
                     <div class="demo-flex-center" style="gap: 12px;">
                         <div class="demo-check-speed-item demo-check-speed-mobile">
                             <div style="font-weight: 600;margin-bottom: 12px;">Mobile</div>
                             <div class="demo-progress-container">
                                 <div class="demo-progress" style="--i:(85 * 2 / 3); --clr: var(--color-primary-red);">
-                                    <span>85</span>
                                 </div>
+                                <span class="demo-progress-percent">85</span>
                             </div>
-                            <div style="margin-top: 12px;">Below average</div>
+                            <div class="demo-progress-detail" style="margin-top: 12px;font-weight: 600;">Below average</div>
                         </div>
                         <div class="demo-check-speed-item demo-check-speed-desktop">
                             <div style="font-weight: 600;margin-bottom: 12px;">Desktop</div>
                             <div class="demo-progress-container">
                                 <div class="demo-progress less" style="--i:(35 * 2 / 3); --clr: var(--color-primary-yellow);">
-                                    <span>35</span>
                                 </div>
+                                <span class="demo-progress-percent">35</span>
                             </div>
-                            <div style="margin-top: 12px;">Below average</div>
+                            <div class="demo-progress-detail" style="margin-top: 12px;font-weight: 600;">Below average</div>
                         </div>
                     </div>
                 </div>
@@ -142,18 +142,26 @@
                 </div>
             </div>
 
+            <!-- Check SEO error -->
+            <div class="demo-check-seo-error" style="color: var(--color-primary-red); margin-top: 20px; margin-bottom: 50px; display: none;">
+                Can't fetch data (because the site blocks our app's request, please check another page)
+            </div>
 
-            <div style="margin: 50px 0;">
-                <img src="/images/demo/banner-check.png" alt="banner-check" style="width: 402px;">
+            <!-- Check SEO default -->
+            <div class="demo-check-seo-default">
+                <div style="margin: 50px 0;">
+                    <img src="/images/demo/banner-check.png" alt="banner-check" style="width: 402px;">
+                </div>
+                <div class="demo-flex">
+                    <a href="https://shopify.pxf.io/Xm4ABg" target="_blank" style="margin-right: 20px;">
+                        <button class="demo-button-default">Open Store Free</button>
+                    </a>
+                    <a href="https://shopify.pxf.io/o4N3dm" target="_blank">
+                        <button class="demo-button-primary">Start free trial</button>
+                    </a>
+                </div>
             </div>
-            <div class="demo-flex">
-                <a href="https://shopify.pxf.io/Xm4ABg" target="_blank" style="margin-right: 20px;">
-                    <button class="demo-button-default">Open Store Free</button>
-                </a>
-                <a href="https://shopify.pxf.io/o4N3dm" target="_blank">
-                    <button class="demo-button-primary">Start free trial</button>
-                </a>
-            </div>
+
         </div>
         <div class="demo__info__app demo-pd-layout demo-flex-space-between">
             <div class="demo-flex-col-center">
@@ -467,6 +475,10 @@
             console.log("hello")
             const elementInputLinkCheck = document.querySelector('.demo-main-link')
             const elementButtonCheck = document.querySelector('.demo-main-check')
+            const elementCheckSEOError = document.querySelector('.demo-check-seo-error')
+            const elementCheckSEOOnePage = document.querySelector('.demo-check-one-page')
+            const elementCheckSEODefault = document.querySelector('.demo-check-seo-default')
+
             const elementCheckSEODetail = document.querySelector('.demo-check-seo-detail')
             const iconIssue = `
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -557,7 +569,6 @@
                     }
                 }
 
-
                 let checkLongUrl = ''
                 if (page.length > 128) {
                     checkLongUrl = renderItemCheckSEO(iconWarning, 'URL contains more than 128 characters', 'URL length should be shorter than 128 characters.')
@@ -567,30 +578,120 @@
 
                 listElementCheck = checkTitle + '\n' + checkDescription + '\n' + checkLongUrl
                 elementCheckSEODetail.innerHTML = listElementCheck
+                elementCheckSEOError.style.display = 'none'
+                elementCheckSEOOnePage.style.display = 'flex'
+                elementCheckSEODefault.style.display = 'none'
             }
 
             const handleCheckOnePageFailure = (message=`Can't fetch data (because the site blocks our app's request, please check another page)`) => {
-
+                elementCheckSEOError.style.display = 'block'
+                elementCheckSEOOnePage.style.display = 'none'
+                elementCheckSEODefault.style.display = 'none'
             }
 
-            elementButtonCheck.addEventListener('click', function() {
-                // let link = elementInputLinkCheck.value; 
-                let link = 'https://dev5-aff.myshopify.com'; 
-                fetch(`https://sb.secomapp.com/api2/get-page-content.json?page=${link}`)
-                    .then(response => {
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('Data received:', data);
-                        if(data.pageContent) {
-                            handleCheckOnePageSuccess(data.pageContent, link)
-                        } else {
-                            handleCheckOnePageFailure()
+            const handleRenderLoadingSpeed = () => {
+                document.querySelectorAll('.demo-progress-detail').forEach(e => {
+                    e.innerHTML = 'Loading ...'
+                    e.style.color = 'var(--color-primary-black)';
+                })
+
+                document.querySelectorAll('.demo-progress-percent').forEach(e => {
+                    e.innerHTML = '0'
+                })
+
+                document.querySelectorAll('.demo-progress').forEach(e => {
+                    e.setAttribute('style', `--i:(0 * 2 / 3); --clr: #F0F0F0;`)
+                })
+            }
+
+            const handleRenderSpeedScore = (type, score) => { // mobile or desktop
+                let color = '';
+                let detail = ''
+                let less = false;
+                if(score < 50) {
+                    color = 'var(--color-primary-red)'
+                    detail = 'Below average'
+                    less = true
+                } else if (score >= 50 && score < 90) {
+                    color = 'var(--color-primary-yellow)'
+                    detail = 'Average'
+                } else {
+                    color = 'var(--color-primary-green)'
+                    detail = 'Good'
+                }
+
+                document.querySelector(`.demo-check-speed-${type} .demo-progress-detail`).innerHTML = detail
+                document.querySelector(`.demo-check-speed-${type} .demo-progress-detail`).style.color = color
+
+                document.querySelector(`.demo-check-speed-${type} .demo-progress-percent`).innerHTML = score
+
+                document.querySelector(`.demo-check-speed-${type} .demo-progress`).setAttribute('style', `--i:(${score} * 2 / 3); --clr: ${color};`)
+                if(less) {
+                    document.querySelector(`.demo-check-speed-${type} .demo-progress`).classList.add('less');
+                } else {
+                    document.querySelector(`.demo-check-speed-${type} .demo-progress`).classList.remove('less');
+                }
+            }
+
+            const getSpeedScoreGoogle = (type, link) => { // mobile or desktop
+                const api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
+                const parameters = {
+                    url: encodeURIComponent(link),
+                    strategy: type,
+                    key: 'AIzaSyC3w9hfBdP0G8Ed37mUy5DDlZBEaX27aE8',
+                    category: 'PERFORMANCE'
+                };
+                let query = `${api}?`;
+                for (var key in parameters) {
+                    query += '&' + `${key}=${parameters[key]}`;
+                }
+                fetch(query)
+                    .then((response) => response.json())
+                    .then(
+                        function (response) {
+                            if (response.error) {
+                                console.error('Execute error', err);
+                                return 0;
+                            }
+                            let score = response.lighthouseResult.categories.performance.score;
+                            score = Math.round(score * 100);
+                            
+                            handleRenderSpeedScore(type, score);
+                        },
+                        function (err) {
+                            console.error('Execute error', err);
+                            return 0;
                         }
-                    })
-                    .catch(error => {
-                        handleCheckOnePageFailure()
-                    });
+                    );
+            };
+
+            elementButtonCheck.addEventListener('click', function() {
+                let link = elementInputLinkCheck.value.trim(); 
+                if(link) {
+                    link = `https://${link.replaceAll("https://", "")}`
+                    fetch(`https://sb.secomapp.com/api2/get-page-content.json?page=${link}`)
+                        .then(response => {
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Data received:', data);
+                            if(data.pageContent) {
+                                handleCheckOnePageSuccess(data.pageContent, link)
+                            } else {
+                                handleCheckOnePageFailure()
+                            }
+                        })
+                        .catch(error => {
+                            handleCheckOnePageFailure()
+                        });
+                    
+                    // check speed
+                    handleRenderLoadingSpeed()
+                    getSpeedScoreGoogle('mobile', link)
+                    getSpeedScoreGoogle('desktop', link)
+                } else {
+                    handleCheckOnePageFailure()
+                }
             })
         }
     </script>
