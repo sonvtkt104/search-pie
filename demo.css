@@ -43,15 +43,18 @@ a:hover {
 }
 .demo-flex {
     display: flex;
+    flex-wrap: wrap;
 }
 .demo-flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 .demo-flex-space-between {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .demo-flex-col-center {
     display: flex;
@@ -211,8 +214,8 @@ a:hover {
     border-radius: 16px;
     padding: 20px;
     background: var(--color-background-orange);
-    flex-basis: 25%;
-    margin: 0 5px;
+    flex-basis: 24%;
+    box-sizing: border-box;
 }
 .demo-why-choose-us-item > img {
     width: 100%;
@@ -317,5 +320,79 @@ a:hover {
     .demo-pd-layout {
         padding-left: 14%;
         padding-right: 14%;
+    }
+}
+.demo__ebook {
+    display: none;
+}
+@media only screen and (max-width: 1000px) {
+    .demo__seo__master img {
+        width: 100%;
+    }
+    .demo-group-action {
+        gap: 16px;
+    }
+    .demo-group-action input {
+        width: 100% !important; 
+    }
+    .demo-why-choose-us-item {
+        flex-basis: 45%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .demo__header {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        gap: 8px;
+    }
+    .demo-why-choose-us-item {
+        flex-basis: 100%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    .demo-decor {
+        display: none;
+    }
+    .demo__info__app{
+        gap: 16px;
+    }
+    .demo__info__app .demo-flex-col-center{
+        flex-basis: 42%;
+    }
+    .demo__partner {
+        height: auto;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        gap: 16px;
+    }
+    .demo-review-user-item {
+        flex-basis: 100%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    .demo-check-seo-default img {
+        width: 100% !important;
+    }
+    
+    .demo__container,
+    .demo-button-default,
+    .demo-button-primary{
+        font-size: 16px;
+    }
+    .demo-h1 {
+        font-size: 26px;
+        line-height: 38px;
+    }
+    .demo-group-info {
+        gap: 8px;
+    }
+    .demo__main {
+        padding-top: 40px;
+    }
+    .demo-pd-layout {
+        padding-left: 3%;
+        padding-right: 3%;
     }
 }
