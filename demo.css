@@ -312,3 +312,10 @@ a:hover {
     color: var(--color-secondary-black);
 
 }
+
+@media only screen and (min-width: 1600px) {
+    .demo-pd-layout {
+        padding-left: 14%;
+        padding-right: 14%;
+    }
+}
